@@ -1,0 +1,10 @@
+rest_api_url: http://localhost:8080
+git_api_url: http://localhost:8081/rest/api/1.0
+git_api_default_reviewer_url: https://localhost:8081/rest/default-reviewers/1.0
+git_url: https://github.com/gargpriyank/python-jenkins-pipeline-sample.git
+git_project: gargpriyank
+git_repo: python-jenkins-pipeline-sample
+git_branch_merge_to: main
+git_user_name: abc
+git_user_email: abc@gmail.com
+git_creds-id: xyz

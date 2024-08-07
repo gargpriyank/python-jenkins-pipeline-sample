@@ -1,0 +1,27 @@
+{
+  "title": "Updated the ini config files",
+  "description": "Updated the ini config files",
+  "state": "OPEN",
+  "open": true,
+  "closed": false,
+  "fromRef": {
+    "id": "",
+    "repository": {
+      "slug": "",
+      "project": {
+        "key": ""
+      }
+    }
+  },
+  "toRef": {
+    "id": "",
+    "repository": {
+      "slug": "",
+      "project": {
+        "key": ""
+      }
+    }
+  },
+  "reviewers": [
+  ]
+}
