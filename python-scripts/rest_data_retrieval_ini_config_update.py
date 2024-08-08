@@ -12,6 +12,7 @@ import sys
 import warnings
 import configparser
 import math
+import socket
 
 warnings.filterwarnings("ignore")
 
@@ -47,6 +48,14 @@ def get_set_rest_api_info(ini_config_service="", ip_type=""):
             logging.error("There are multiple records in REST API for the server: %s", server_name)
             sys.exit()
         else:
+            resloved_ip_list = []
+            try:
+                resolved_ip_response = socket.getaddrinfo(server_name, 0)
+                for resolved_ip in resolved_ip_response:
+                    resloved_ip_list.append(resolved_ip[-1][0])
+            except Exception:
+                raise Exception("Host: " + server_name + " is not resolvable") from None
+                
             for rest_api_items in rest_api_data:
                 gateway = ''
                 logging.info("Retrieved IP address: %s", rest_api_items['ip'])
