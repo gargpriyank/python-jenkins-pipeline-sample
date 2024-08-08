@@ -94,10 +94,19 @@ def use_ini_config_file():
     ini_config_service.optionxform = str
     with open(args["ini_config_file"]) as stream:
         ini_config_service.read_string("[ini_config_service]\n" + stream.read())
+
+        primary_ip = ini_config_service.get("ini_config_service", "primary_ip")
+        if is_not_blank(primary_ip):
+            raise Exception("The ini config file: " + args["ini_config_file"].split("/")[-1] + " already has a primary ip address")
+        
         get_set_rest_api_info(ini_config_service, "R")
         get_set_rest_api_info(ini_config_service, "B")
         get_set_rest_api_info(ini_config_service, "I")
         write_to_ini_config(ini_config_service)
+
+def is_not_blank(string):
+    string = string.replace(" ", "")
+    return bool(striing and not string.isspace() and not string._contains_('""'))
 
 def get_network_mask(subnet_size):
     cidr = 32 - math.ceil(math.log(int(subnet_size)) / math.log(2))
