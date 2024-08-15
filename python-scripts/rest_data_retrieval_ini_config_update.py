@@ -30,6 +30,9 @@ def get_set_rest_api_info(ini_config_service="", ip_type=""):
     if server_name.startswith('"') and server_name.endswith('"'):
         server_name = server_name[1:-1]
 
+    if not is_not_blank(server_name):
+        raise NoDataFoundException
+
     if ip_type == "B":
         server_name = server_name + "b"
     elif ip_type == "I":
@@ -117,6 +120,9 @@ def get_network_mask(subnet_size):
             str((0x000000ff & network_mask)))
 
 if __name__ == "__main__":
+    class NoDataFoundException
+        message: str
+    
     if args["ini_config_file"]:
         if args["url"]:
             rest_api_url = args["url"]
